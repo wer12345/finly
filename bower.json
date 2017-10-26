@@ -1,0 +1,21 @@
+{
+  "name": "finly",
+  "description": "",
+  "main": "index.js",
+  "keyword": "js",
+  "authors": [
+    "odank"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/wer12345/finly",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4.0.0-beta"
+  }
+}
