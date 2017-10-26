@@ -44,8 +44,7 @@ gulp.task('browserSync', function() {
 gulp.task('useref', function() {
   return gulp.src('app/*.html')
     .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulpIf('*.css', cssnano()))
+    .pipe(gulpif('*.js', uglify()))
     .pipe(gulp.dest('dist'))
 });
 
@@ -63,19 +62,15 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest('dist/fonts'))
 })
 
-gulp.task('build', [`clean`, `sass`, `useref`, `images`, `fonts`], function (){
-  console.log('Building files');
-})
-
-gulp.task('task-name', function(callback) {
-  runSequence('task-one', 'task-two', 'task-three', callback);
-});
-
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 
       ['sass', 'useref', 'images', 'fonts'],
       callback
     )
+})
+
+gulp.task('clean:dist', function() {
+  return del.sync('dist');
 })
 
 gulp.task('default', function (callback) {
